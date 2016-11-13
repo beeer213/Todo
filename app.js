@@ -18,3 +18,9 @@ angular.module('myApp',[] )
 .controller('listTodo' , function ($scope , todoService){
 	$scope.contacts = todoService.list()
 })
+.controller('CH' , function ($scope , todoService){
+
+	$scope.checkboxModel = {
+      		 done : ''
+        }
+})

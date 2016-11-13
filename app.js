@@ -15,3 +15,6 @@ angular.module('myApp',[] )
 		self.contacts.delete(contact)
 	}
 })
+.controller('listTodo' , function ($scope , todoService){
+	$scope.contacts = todoService.list()
+})

@@ -24,3 +24,29 @@ angular.module('myApp',[] )
       		 done : ''
         }
 })
+.controller('addTodo' , function ($scope , todoService){
+	$scope.save = function () {
+	if ( $scope.newtodo != undefined && $scope.newtodo != ""){
+			var contact = {
+				title : $scope.newtodo
+			}
+			console.log($scope.newtodo)
+			todoService.add(contact)
+			reset()
+		}
+	}
+	$scope.remove = function (){
+	if ( $scope.newtodo != undefined && $scope.newtodo != ""){
+			var contact = {
+				title : $scope.newtodo
+			}
+			console.log($scope.newtodo)
+			todoService.remove(contact)
+			reset()
+		}
+	}
+
+	function reset() {
+		$scope.newtodo = undefined
+	}
+})

@@ -51,9 +51,11 @@
 						<tbody>
 							<tr ng-repeat="contact in contacts">
 								<br>
-								<td><input type="checkbox" ng-checked="contact.done" ng-model="checkboxModel.done" ng-true-value="'Complete !!'" ng-false-value="''"></td>
+								<td><input type="checkbox" ng-model="done" ng-init="done = contact.done "></td>
 								<td>{{ contact.title }}</td>
-								<td>{{ checkboxModel.done }}</td>
+								<td>
+									<div ng-if="done">complete</div>
+								</td>
 								<td><button type="button" class="btn btn-danger" ng-clik="remove()">Delete</button></td>
 							</tr>
 						</tbody>

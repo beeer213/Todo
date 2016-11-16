@@ -2,7 +2,9 @@ angular.module('myApp',[] )
 .service('todoService' , function () {
 	var self = this
 
-	self.contacts = []
+	self.contacts = [
+		{ title : "Eark" , done : false}
+	]
 
 	self.list = function () {
 		return self.contacts
@@ -28,7 +30,8 @@ angular.module('myApp',[] )
 	$scope.save = function () {
 	if ( $scope.newtodo != undefined && $scope.newtodo != ""){
 			var contact = {
-				title : $scope.newtodo
+				title : $scope.newtodo,
+				done : false
 			}
 			console.log($scope.newtodo)
 			todoService.add(contact)

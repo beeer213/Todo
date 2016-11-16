@@ -3,7 +3,8 @@ angular.module('myApp',[] )
 	var self = this
 
 	self.contacts = [
-		{ title : "Eark" , done : false}
+		{ title : "Eark" , done : false},
+		{ title : "Beer" , done : true}
 	]
 
 	self.list = function () {

@@ -1,25 +1,25 @@
-angular.module('myApp',[] )
+angular.module('Todos',[] )
 .service('todoService' , function () {
 	var self = this
 
-	self.contacts = [
+	self.todos = [
 		{ title : "Eark" , done : false},
 		{ title : "Beer" , done : true}
 	]
 
 	self.list = function () {
-		return self.contacts
+		return self.todos
 	}
 
-	self.add = function (contact) {
-		self.contacts.push(contact)
+	self.add = function (todo) {
+		self.todos.push(todo)
 	}
-	self.remove = function (contacts){
-		self.contacts.delete(contact)
+	self.remove = function (todo){
+		self.todos.delete(todo)
 	}
 })
 .controller('listTodo' , function ($scope , todoService){
-	$scope.contacts = todoService.list()
+	$scope.todos = todoService.list()
 })
 .controller('CH' , function ($scope , todoService){
 
@@ -30,24 +30,24 @@ angular.module('myApp',[] )
 .controller('addTodo' , function ($scope , todoService){
 	$scope.save = function () {
 	if ( $scope.newtodo != undefined && $scope.newtodo != ""){
-			var contact = {
+			var todo = {
 				title : $scope.newtodo,
 				done : false
 			}
 			console.log($scope.newtodo)
-			todoService.add(contact)
+			todoService.add(todo)
 			reset()
 		}
 	}
 	$scope.remove = function (){
-	if ( $scope.newtodo != undefined && $scope.newtodo != ""){
-			var contact = {
-				title : $scope.newtodo
-			}
-			console.log($scope.newtodo)
-			todoService.remove(contact)
-			reset()
-		}
+		var originalTodos = self.todos.slice(0);
+
+				self.todos.splice(self.todos.indexOf(todo), 1);
+				return self.delete({ title : todo.title },
+					function () {
+					}, function error() {
+						angular.copy(originalTodos, self.todos)
+					})
 	}
 
 	function reset() {

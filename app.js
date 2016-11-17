@@ -15,11 +15,21 @@ angular.module('Todos',[] )
 		self.todos.push(todo)
 	}
 	self.remove = function (todo){
-		self.todos.delete(todo)
+		var idx = self.todos.slice(0);
+
+		self.todos.splice(self.todos.indexOf(todo), 1)
 	}
 })
 .controller('listTodo' , function ($scope , todoService){
 	$scope.todos = todoService.list()
+
+	// replacement remove function here becourse data table on this controller
+	$scope.remove = function (param){
+		// remove data in data service
+
+		todoService.remove(param);
+	}
+
 })
 .controller('CH' , function ($scope , todoService){
 
@@ -39,16 +49,7 @@ angular.module('Todos',[] )
 			reset()
 		}
 	}
-	$scope.remove = function (){
-		var originalTodos = self.todos.slice(0);
 
-				self.todos.splice(self.todos.indexOf(todo), 1);
-				return self.delete({ title : todo.title },
-					function () {
-					}, function error() {
-						angular.copy(originalTodos, self.todos)
-					})
-	}
 
 	function reset() {
 		$scope.newtodo = undefined

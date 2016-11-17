@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
+<html ng-app="Todos">
 
 <head>
 	<meta charset="UTF-8">
@@ -49,14 +49,14 @@
 					</thead>
 					<div class="col-md-12">
 						<tbody>
-							<tr ng-repeat="contact in contacts">
+							<tr ng-repeat="todo in todos">
 								<br>
-								<td><input type="checkbox" ng-model="done" ng-init="done = contact.done "></td>
-								<td>{{ contact.title }}</td>
+								<td><input type="checkbox" ng-model="done" ng-init="done = todo.done "></td>
+								<td>{{ todo.title }}</td>
 								<td>
-									<div ng-if="done">complete</div>
+									<div ng-if="done">Complete</div>
 								</td>
-								<td><button type="button" class="btn btn-danger" ng-clik="remove()">Delete</button></td>
+								<td><button type="button" class="btn btn-danger" ng-click="remove(todos)">Delete</button></td>
 							</tr>
 						</tbody>
 					</div>
